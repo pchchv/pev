@@ -2,6 +2,11 @@ package pev
 
 import "math"
 
+// GetEntropy returns the entropy in bits for the given password.
+func GetEntropy(password string) float64 {
+	return getEntropy(password)
+}
+
 func logX(base, n float64) float64 {
 	if base == 0 {
 		return 0
