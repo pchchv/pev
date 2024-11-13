@@ -1,0 +1,47 @@
+package pev_test
+
+import (
+	"testing"
+
+	"github.com/pchchv/pev"
+)
+
+func TestRemoveMoreThanTwoFromSequence(t *testing.T) {
+	actual := pev.removeMoreThanTwoFromSequence("12345678", "0123456789")
+	expected := "12"
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+
+	actual = pev.removeMoreThanTwoFromSequence("abcqwertyabc", "qwertyuiop")
+	expected = "abcqwabc"
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+
+	actual = pev.removeMoreThanTwoFromSequence("", "")
+	expected = ""
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+
+	actual = pev.removeMoreThanTwoFromSequence("", "12345")
+	expected = ""
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+}
+
+func TestGetReversedString(t *testing.T) {
+	actual := pev.getReversedString("abcd")
+	expected := "dcba"
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+
+	actual = pev.getReversedString("1234")
+	expected = "4321"
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+}
