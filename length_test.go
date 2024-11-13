@@ -1,31 +1,27 @@
-package pev_test
+package pev
 
-import (
-	"testing"
-
-	"github.com/pchchv/pev"
-)
+import "testing"
 
 func TestRemoveMoreThanTwoFromSequence(t *testing.T) {
-	actual := pev.removeMoreThanTwoFromSequence("12345678", "0123456789")
+	actual := removeMoreThanTwoFromSequence("12345678", "0123456789")
 	expected := "12"
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 
-	actual = pev.removeMoreThanTwoFromSequence("abcqwertyabc", "qwertyuiop")
+	actual = removeMoreThanTwoFromSequence("abcqwertyabc", "qwertyuiop")
 	expected = "abcqwabc"
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 
-	actual = pev.removeMoreThanTwoFromSequence("", "")
+	actual = removeMoreThanTwoFromSequence("", "")
 	expected = ""
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 
-	actual = pev.removeMoreThanTwoFromSequence("", "12345")
+	actual = removeMoreThanTwoFromSequence("", "12345")
 	expected = ""
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
@@ -33,13 +29,13 @@ func TestRemoveMoreThanTwoFromSequence(t *testing.T) {
 }
 
 func TestGetReversedString(t *testing.T) {
-	actual := pev.getReversedString("abcd")
+	actual := getReversedString("abcd")
 	expected := "dcba"
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 
-	actual = pev.getReversedString("1234")
+	actual = getReversedString("1234")
 	expected = "4321"
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
@@ -47,25 +43,25 @@ func TestGetReversedString(t *testing.T) {
 }
 
 func TestRemoveRepeatingChars(t *testing.T) {
-	actual := pev.removeMoreThanTwoRepeatingChars("aaaa")
+	actual := removeMoreThanTwoRepeatingChars("aaaa")
 	expected := "aa"
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 
-	actual = pev.removeMoreThanTwoRepeatingChars("bbbbbbbaaaaaaaaa")
+	actual = removeMoreThanTwoRepeatingChars("bbbbbbbaaaaaaaaa")
 	expected = "bbaa"
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 
-	actual = pev.removeMoreThanTwoRepeatingChars("ab")
+	actual = removeMoreThanTwoRepeatingChars("ab")
 	expected = "ab"
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 
-	actual = pev.removeMoreThanTwoRepeatingChars("")
+	actual = removeMoreThanTwoRepeatingChars("")
 	expected = ""
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
@@ -73,31 +69,31 @@ func TestRemoveRepeatingChars(t *testing.T) {
 }
 
 func TestGetLength(t *testing.T) {
-	actual := pev.getLength("aaaa")
+	actual := getLength("aaaa")
 	expected := 2
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 
-	actual = pev.getLength("11112222")
+	actual = getLength("11112222")
 	expected = 4
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 
-	actual = pev.getLength("aa123456")
+	actual = getLength("aa123456")
 	expected = 4
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 
-	actual = pev.getLength("876543")
+	actual = getLength("876543")
 	expected = 2
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 
-	actual = pev.getLength("qwerty123456z")
+	actual = getLength("qwerty123456z")
 	expected = 5
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
