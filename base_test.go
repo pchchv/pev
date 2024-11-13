@@ -2,6 +2,7 @@ package pev_test
 
 import (
 	"testing"
+
 	"github.com/pchchv/pev"
 )
 
@@ -16,7 +17,7 @@ const (
 
 func TestGetBase(t *testing.T) {
 	actual := pev.getBase("abcd")
-	expected := len(pev.lowerChars)
+	expected := len(lowerChars)
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
