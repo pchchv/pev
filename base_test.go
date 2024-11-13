@@ -1,64 +1,51 @@
-package pev_test
+package pev
 
-import (
-	"testing"
-
-	"github.com/pchchv/pev"
-)
-
-const (
-	sepChars          = `_-., `
-	replaceChars      = `!@$&*`
-	digitsChars       = `0123456789`
-	lowerChars        = `abcdefghijklmnopqrstuvwxyz`
-	upperChars        = `ABCDEFGHIJKLMNOPQRSTUVWXYZ`
-	otherSpecialChars = `"#%'()+/:;<=>?[\]^{|}~`
-)
+import "testing"
 
 func TestGetBase(t *testing.T) {
-	actual := pev.getBase("abcd")
+	actual := getBase("abcd")
 	expected := len(lowerChars)
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 
-	actual = pev.getBase("abcdA")
+	actual = getBase("abcdA")
 	expected = len(lowerChars) + len(upperChars)
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 
-	actual = pev.getBase("A")
+	actual = getBase("A")
 	expected = len(upperChars)
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 
-	actual = pev.getBase("^_")
+	actual = getBase("^_")
 	expected = len(otherSpecialChars) + len(sepChars)
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 
-	actual = pev.getBase("^")
+	actual = getBase("^")
 	expected = len(otherSpecialChars)
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 
-	actual = pev.getBase("!")
+	actual = getBase("!")
 	expected = len(replaceChars)
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 
-	actual = pev.getBase("123")
+	actual = getBase("123")
 	expected = len(digitsChars)
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 
-	actual = pev.getBase("123ü")
+	actual = getBase("123ü")
 	expected = len(digitsChars) + 1
 	if actual != expected {
 		t.Errorf("Wanted %v, got %v", expected, actual)
