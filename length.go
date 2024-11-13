@@ -41,3 +41,19 @@ func removeMoreThanTwoFromSequence(s, seq string) string {
 
 	return string(runes)
 }
+
+func removeMoreThanTwoRepeatingChars(s string) string {
+	var prev rune
+	var prevPrev rune
+	runes := []rune(s)
+	for i := 0; i < len(runes); i++ {
+		r := runes[i]
+		if r == prev && r == prevPrev {
+			runes = deleteRuneAt(runes, i)
+			i--
+		}
+		prev, prevPrev = r, prev
+	}
+
+	return string(runes)
+}
