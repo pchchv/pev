@@ -22,3 +22,11 @@ func logPow(expBase float64, pow int, logBase float64) (total float64) {
 
 	return
 }
+
+func getEntropy(password string) float64 {
+	base := getBase(password)
+	length := getLength(password)
+
+	// calculate log2(base^length)
+	return logPow(float64(base), length, 2)
+}
